@@ -1,0 +1,191 @@
+name: Module Check
+
+on:
+  push:
+    # Only trigger on module branches — not main, not feature branches
+    branches:
+      - 'module-[0-9][0-9]-*'
+
+jobs:
+  check:
+    name: Validate exercises
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          # Cache root node_modules
+          cache-dependency-path: package-lock.json
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install Lumio dependencies
+        run: npm ci --prefix lumio
+        env:
+          ELECTRON_SKIP_BINARY_DOWNLOAD: 1
+
+      # Cache Playwright browser binaries — they're large and don't change often
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Playwright browsers
+        # Skip install if cache hit — saves ~2 min per run
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: |
+          # Most modules need Chromium only.
+          # M07 and M34 (cross-browser) install all three via their own
+          # overridden workflow step in their branch's module-check.yml.
+          npx playwright install --with-deps chromium
+
+      - name: Detect module directory from branch name
+        id: module
+        run: |
+          BRANCH="${GITHUB_REF#refs/heads/}"
+          # Extract 'module-NN-topic' from branch name (handles both
+          # 'module-05-navigation' and 'module-05-navigation-solution')
+          MODULE=$(echo "$BRANCH" | grep -oP 'module-\d{2}-[a-z-]+' | head -1)
+          echo "name=$MODULE" >> "$GITHUB_OUTPUT"
+          echo "Detected module: $MODULE"
+
+      - name: Verify module directory exists
+        run: |
+          MODULE="${{ steps.module.outputs.name }}"
+          if [ ! -d "tests/$MODULE" ]; then
+            echo "ERROR: tests/$MODULE directory not found."
+            echo "Branch name must match the tests/ directory: module-NN-topic"
+            exit 1
+          fi
+
+      - name: Copy env.test for CI
+        run: |
+          # CI uses environment secrets; create .env.test from them.
+          # DATABASE_URL uses SQLite — no external database service needed.
+          cat > .env.test << EOF
+          BASE_URL=${{ vars.BASE_URL || 'http://localhost:3000' }}
+          DATABASE_URL=file:./prisma/test.db
+          NEXTAUTH_SECRET=ci-test-secret
+          NEXTAUTH_URL=http://localhost:3000
+          TEST_USER_EMAIL=${{ vars.TEST_USER_EMAIL || 'test@lumio.dev' }}
+          TEST_USER_PASSWORD=${{ secrets.TEST_USER_PASSWORD || 'TestPassword123!' }}
+          TEST_ADMIN_EMAIL=${{ vars.TEST_ADMIN_EMAIL || 'admin@lumio.dev' }}
+          TEST_ADMIN_PASSWORD=${{ secrets.TEST_ADMIN_PASSWORD || 'AdminPassword123!' }}
+          EOF
+
+      - name: Setup database
+        run: cd lumio && npx prisma generate && npx prisma db push && npx prisma db seed
+        env:
+          DATABASE_URL: file:./prisma/test.db
+
+      - name: Run module exercises
+        id: run-tests
+        run: |
+          npx playwright test "tests/${{ steps.module.outputs.name }}" \
+            --reporter=github \
+            --reporter=json:test-results.json
+        # Don't fail the step here — we read the results and post a comment first
+        continue-on-error: true
+
+      - name: Post success comment
+        if: steps.run-tests.outcome == 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const module = '${{ steps.module.outputs.name }}';
+            const num = parseInt(module.match(/module-(\d+)/)[1]);
+            const nextNum = String(num + 1).padStart(2, '0');
+            await github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body: [
+                `## ✅ ${module} complete!`,
+                '',
+                'All exercises passed. Great work.',
+                '',
+                '**What you practiced:**',
+                '> Check your module\'s README.md Key Takeaways section.',
+                '',
+                '**To continue to the next module:**',
+                '```bash',
+                `git checkout module-${nextNum}-*`,
+                '```',
+              ].join('\n'),
+            });
+
+      - name: Post failure comment
+        if: steps.run-tests.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let failedTests = [];
+            try {
+              const raw = fs.readFileSync('test-results.json', 'utf8');
+              const results = JSON.parse(raw);
+              // Flatten suite tree to find all failed specs
+              function collectFailed(suites) {
+                for (const suite of suites || []) {
+                  for (const spec of suite.specs || []) {
+                    const hasFailed = spec.tests?.some(t => t.status === 'failed' || t.status === 'unexpected');
+                    if (hasFailed) failedTests.push(spec.title);
+                  }
+                  collectFailed(suite.suites);
+                }
+              }
+              collectFailed(results.suites);
+            } catch (e) {
+              failedTests = ['(could not parse test results)'];
+            }
+
+            const listItems = failedTests
+              .map(t => `- **${t}**: Review \`hints.md\` in this module for targeted guidance.`)
+              .join('\n');
+
+            await github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body: [
+                '## ❌ Some exercises need attention',
+                '',
+                listItems,
+                '',
+                '> **Tip:** Focus on *why* the API works the way it does — not just the syntax.',
+                '> The hints in `hints.md` explain the reasoning, not just the answer.',
+                '',
+                '**To debug locally:**',
+                '```bash',
+                `npx playwright test tests/${{ steps.module.outputs.name }} --headed`,
+                '# Or use UI mode for step-by-step inspection:',
+                `npx playwright test tests/${{ steps.module.outputs.name }} --ui`,
+                '```',
+              ].join('\n'),
+            });
+
+      # Always upload report and traces — available as artifacts for 7 days
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report-${{ github.sha }}
+          path: |
+            playwright-report/
+            test-results.json
+          retention-days: 7
+
+      # Fail the job if tests failed (after posting the comment)
+      - name: Propagate test failure
+        if: steps.run-tests.outcome == 'failure'
+        run: exit 1

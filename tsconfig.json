@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "ignoreDeprecations": "6.0",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@fixtures": ["tests/fixtures/fixtures.ts"],
+      "@fixtures/*": ["tests/fixtures/*"]
+    }
+  },
+  "include": [
+    "tests/fixtures/**/*.ts",
+    "scripts/**/*.ts",
+    "playwright.config.ts"
+  ],
+  "exclude": [
+    "lumio/**/*",
+    "node_modules/**/*",
+    "dist/**/*"
+  ]
+}

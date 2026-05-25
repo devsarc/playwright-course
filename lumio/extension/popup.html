@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumio Quick Add</title>
+  <style>
+    body { font-family: system-ui, sans-serif; width: 320px; margin: 0; padding: 16px; }
+    h1 { font-size: 16px; margin: 0 0 12px; color: #3b55e6; }
+    label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+    input, select { width: 100%; box-sizing: border-box; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px; margin-bottom: 12px; }
+    button { width: 100%; padding: 8px; background: #4f6ef7; color: white; border: none; border-radius: 6px; font-size: 13px; cursor: pointer; }
+    button:hover { background: #3b55e6; }
+    #status { margin-top: 8px; font-size: 12px; text-align: center; }
+    .success { color: #16a34a; }
+    .error { color: #dc2626; }
+  </style>
+</head>
+<body>
+  <h1>Lumio Quick Add</h1>
+
+  <label for="task-title">Task title</label>
+  <input id="task-title" type="text" placeholder="What needs to be done?" />
+
+  <label for="task-priority">Priority</label>
+  <select id="task-priority">
+    <option value="LOW">Low</option>
+    <option value="MEDIUM" selected>Medium</option>
+    <option value="HIGH">High</option>
+    <option value="URGENT">Urgent</option>
+  </select>
+
+  <button id="submit-btn" type="button">Add to Lumio</button>
+  <div id="status" role="status" aria-live="polite"></div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

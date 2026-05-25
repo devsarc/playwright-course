@@ -1,0 +1,7 @@
+[
+  { "title": "Design landing page", "priority": "high",   "label": "design",   "column": "todo" },
+  { "title": "Write API docs",      "priority": "medium", "label": "docs",     "column": "todo" },
+  { "title": "Fix login bug",       "priority": "high",   "label": "bug",      "column": "todo" },
+  { "title": "Add dark mode",       "priority": "low",    "label": "feature",  "column": "todo" },
+  { "title": "Review PR #42",       "priority": "medium", "label": "review",   "column": "todo" }
+]

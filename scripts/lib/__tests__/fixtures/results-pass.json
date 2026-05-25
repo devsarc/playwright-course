@@ -1,0 +1,43 @@
+{
+  "suites": [
+    {
+      "title": "exercise.spec.ts",
+      "file": "tests/module-00-setup/exercise.spec.ts",
+      "suites": [
+        {
+          "title": "M00 — Setup",
+          "suites": [],
+          "tests": [
+            {
+              "title": "dev server is running",
+              "results": [{ "status": "passed", "duration": 120 }]
+            },
+            {
+              "title": "app title is correct",
+              "results": [{ "status": "passed", "duration": 80 }]
+            }
+          ]
+        }
+      ],
+      "tests": []
+    },
+    {
+      "title": "exercise.spec.ts",
+      "file": "tests/module-02-locators/exercise.spec.ts",
+      "suites": [
+        {
+          "title": "M02 — Locators",
+          "suites": [],
+          "tests": [
+            {
+              "title": "find by role",
+              "results": [{ "status": "passed", "duration": 200 }]
+            }
+          ]
+        }
+      ],
+      "tests": []
+    }
+  ],
+  "stats": { "total": 3, "passed": 3, "failed": 0, "skipped": 0 }
+}

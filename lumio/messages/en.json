@@ -1,0 +1,33 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "projects": "Projects",
+    "docs": "Docs",
+    "members": "Members",
+    "settings": "Settings",
+    "signOut": "Sign out"
+  },
+  "landing": {
+    "hero": "The productivity platform your team will actually use",
+    "cta": "Get started free",
+    "features": "Everything your team needs",
+    "pricing": "Simple, transparent pricing"
+  },
+  "tasks": {
+    "create": "Create task",
+    "noTasks": "No tasks yet",
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "urgent": "Urgent"
+    }
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "email": "Email address",
+    "password": "Password",
+    "forgotPassword": "Forgot password?"
+  }
+}
