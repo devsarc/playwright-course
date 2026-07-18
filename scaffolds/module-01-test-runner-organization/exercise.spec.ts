@@ -190,6 +190,7 @@ test.describe('Part 4 — Global Setup & Teardown (formerly M09)', () => {
   test('test database has seeded project', async ({ request }) => {
     // TODO 4.5: Use the request fixture to GET /api/projects?workspaceId={id}.
     // First, read the workspaceId from .test-state.json (same as TODO 4.4).
+    // Then make the API call and assert the response contains at least one project.
     const state = JSON.parse(readFileSync(join(__dirname, '.test-state.json'), 'utf-8'));
 
     const response = await request.get(
