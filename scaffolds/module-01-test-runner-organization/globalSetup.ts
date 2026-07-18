@@ -4,7 +4,7 @@ import { prisma } from '../../lumio/lib/db';
 // M09: Global Setup
 // This runs ONCE before all tests in the suite.
 // At M09, we verify the test database has the expected seed data.
-// Auth-aware globalSetup (login + storageState) is covered in M16.
+// Auth-aware globalSetup (login + storageState) is covered in Lesson 03 (formerly M16).
 
 async function globalSetup(_config: FullConfig) {
   // TODO 1: Verify the test user exists in the database.
@@ -35,7 +35,7 @@ async function globalSetup(_config: FullConfig) {
 
   // TODO 3: Write the test workspace ID to a JSON file so tests can read it.
   // Use fs.writeFileSync to write { workspaceId: workspace.id } to
-  // tests/module-09-global-setup/.test-state.json.
+  // tests/module-01-test-runner-organization/.test-state.json.
   const { writeFileSync } = await import('fs');
   const { join } = await import('path');
   writeFileSync(
