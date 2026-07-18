@@ -2,6 +2,10 @@
 
 ## Part 1 — Setup & Project Structure (formerly M00)
 
+### Lumio Context (from M00's README)
+
+At M00, Lumio has only a landing page. Your test navigates to it and asserts the page title exists. This is intentionally minimal — the goal is to prove your environment works, not to write a meaningful test.
+
 ### What's in Lumio at this point
 
 At M00, Lumio has only a single page: the marketing landing page at `/`.
