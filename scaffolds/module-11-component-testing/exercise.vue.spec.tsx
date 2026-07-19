@@ -1,18 +1,25 @@
-import { test, expect } from '@playwright/experimental-ct-vue';
+// Lesson 11: Component Testing: React & Vue
+// Combines former module: M53 (Vue Component Testing) — Part 3 of this
+// lesson.
+//
+// Parts 1, 2, and 4 (M51, M52, M54 — all React CT) live in the sibling file
+// exercise.spec.tsx instead of here. M53 alone uses
+// @playwright/experimental-ct-vue and a mount fixture that is not
+// interchangeable with the React CT fixture used by the other three Parts,
+// so it needs its own config (playwright-ct-vue.config.ts) and its own file.
+//
+// TODO numbers are prefixed with "3." to stay unique and consistent with
+// this lesson's overall Part numbering (a TODO originally numbered N in the
+// M53 module becomes TODO
+// 3.N here).
 
-// M53: Vue Component Testing
-//
-// Lumio is React-only, but this module tests a standalone vue-demo/TaskForm.vue
-// component to prepare you for hybrid codebases and third-party Vue widgets.
-//
-// Run with the Vue CT config:
-//   npx playwright test --config playwright-ct-vue.config.ts tests/module-53-vue-component-testing
+import { test, expect } from '@playwright/experimental-ct-vue';
 
 // In a real Vue CT test:
 //   import TaskForm from '../../vue-demo/TaskForm.vue';
 //   import type { ComponentProps } from '@playwright/experimental-ct-vue';
 
-test.describe('M53 — Vue Component Testing', () => {
+test.describe('Part 3 — Vue Component Testing (formerly M53)', () => {
 
   // Test 1: Mount a Vue component with props
   // Vue CT uses an options object for props (not JSX).
@@ -23,8 +30,8 @@ test.describe('M53 — Vue Component Testing', () => {
     //   });
     //   await expect(component).toContainText('My task');
 
-    // TODO 1: What option key passes props in Vue CT (as opposed to JSX in React CT)?
-    const vuePropsKey = /* TODO 1: 'props' */ '';
+    // TODO 3.1: What option key passes props in Vue CT (as opposed to JSX in React CT)?
+    const vuePropsKey = /* TODO 3.1: 'props' */ '';
     expect(vuePropsKey).toBe('props');
   });
 
@@ -41,8 +48,8 @@ test.describe('M53 — Vue Component Testing', () => {
     //   await expect(component).toContainText('Custom footer');
     //   await expect(component.getByRole('button', { name: 'Extra action' })).toBeVisible();
 
-    // TODO 2: What option key passes slot content in Vue CT?
-    const vueSlotsKey = /* TODO 2: 'slots' */ '';
+    // TODO 3.2: What option key passes slot content in Vue CT?
+    const vueSlotsKey = /* TODO 3.2: 'slots' */ '';
     expect(vueSlotsKey).toBe('slots');
   });
 
@@ -59,8 +66,8 @@ test.describe('M53 — Vue Component Testing', () => {
     //   await component.getByRole('button', { name: 'Submit' }).click();
     //   expect(emittedValues).toHaveLength(1);
 
-    // TODO 3: What option key listens for Vue component events in CT?
-    const vueEventsKey = /* TODO 3: 'on' */ '';
+    // TODO 3.3: What option key listens for Vue component events in CT?
+    const vueEventsKey = /* TODO 3.3: 'on' */ '';
     expect(vueEventsKey).toBe('on');
   });
 
@@ -74,8 +81,8 @@ test.describe('M53 — Vue Component Testing', () => {
     //     // Access: instance.$data, instance.$props, instance.myMethod()
     //   });
 
-    // TODO 4: Which hook provides access to the Vue component instance post-render?
-    const instanceHookName = /* TODO 4: 'afterMount' */ '';
+    // TODO 3.4: Which hook provides access to the Vue component instance post-render?
+    const instanceHookName = /* TODO 3.4: 'afterMount' */ '';
     expect(instanceHookName).toBe('afterMount');
   });
 
@@ -87,8 +94,8 @@ test.describe('M53 — Vue Component Testing', () => {
     // The mount() API, locators, and assertions are identical.
     // Only the Vite plugin and the mount option structure differ.
 
-    // TODO 5: What Vite plugin is used for Vue CT?
-    const vueVitePlugin = /* TODO 5: 'vue' */ '';
+    // TODO 3.5: What Vite plugin is used for Vue CT?
+    const vueVitePlugin = /* TODO 3.5: 'vue' */ '';
     expect(vueVitePlugin).toBe('vue');
   });
 
@@ -102,12 +109,12 @@ test.describe('M53 — Vue Component Testing', () => {
     //
     // The locator and assertion API after mounting is IDENTICAL in both.
 
-    // TODO 6: In Vue CT, props go inside which options key?
-    const propsKey = /* TODO 6: 'props' */ '';
-    // TODO 7: In Vue CT, event listeners go inside which options key?
-    const eventsKey = /* TODO 7: 'on' */ '';
-    // TODO 8: In Vue CT, slot content goes inside which options key?
-    const slotsKey = /* TODO 8: 'slots' */ '';
+    // TODO 3.6: In Vue CT, props go inside which options key?
+    const propsKey = /* TODO 3.6: 'props' */ '';
+    // TODO 3.7: In Vue CT, event listeners go inside which options key?
+    const eventsKey = /* TODO 3.7: 'on' */ '';
+    // TODO 3.8: In Vue CT, slot content goes inside which options key?
+    const slotsKey = /* TODO 3.8: 'slots' */ '';
 
     expect(propsKey).toBe('props');
     expect(eventsKey).toBe('on');
@@ -123,10 +130,10 @@ test.describe('M53 — Vue Component Testing', () => {
       'Micro-frontend architecture where one module is Vue',
     ];
 
-    // TODO 9: Assert that vueCTUseCases is an Array with length > 0.
+    // TODO 3.9: Assert that vueCTUseCases is an Array with length > 0.
     // Why? Understanding the real-world contexts where Vue CT applies prevents
     // the common mistake of treating it as a tool only for Vue-primary projects.
-    expect(Array.isArray(/* TODO 9: vueCTUseCases */)).toBe(true);
+    expect(Array.isArray(/* TODO 3.9: vueCTUseCases */)).toBe(true);
     expect(vueCTUseCases.length).toBeGreaterThan(0);
   });
 
