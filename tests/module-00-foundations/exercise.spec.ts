@@ -324,11 +324,11 @@ test.describe('Part 6 — Navigation & Page State (formerly M05)', () => {
       await expect(page).toHaveURL(/\/pricing/);
 
       // TODO 6.3: Navigate back to the landing page using page.goBack().
-      await page./* TODO 6.3: goBack() */;
+      await page./* TODO 6.3: goBack() */ waitForTimeout(0);
       await expect(page).toHaveURL('http://localhost:3000/');
 
       // TODO 6.4: Navigate forward to /pricing using page.goForward().
-      await page./* TODO 6.4: goForward() */;
+      await page./* TODO 6.4: goForward() */ waitForTimeout(0);
       await expect(page).toHaveURL(/\/pricing/);
     });
 
@@ -342,7 +342,7 @@ test.describe('Part 6 — Navigation & Page State (formerly M05)', () => {
       // TODO 6.5: Wait for the URL to change to /dashboard after login.
       // waitForURL waits for the browser to navigate to a URL matching the pattern.
       // Use a regex to match any URL containing 'dashboard'.
-      await page./* TODO 6.5: waitForURL(/dashboard/, { timeout: 10_000 }) */;
+      await page./* TODO 6.5: waitForURL(/dashboard/, { timeout: 10_000 }) */ waitForTimeout(0);
 
       await expect(page).toHaveURL(/dashboard/);
     });
@@ -353,7 +353,7 @@ test.describe('Part 6 — Navigation & Page State (formerly M05)', () => {
       // 'load' fires after all resources. 'networkidle' fires when no requests for 500ms.
       // Use 'domcontentloaded' for fast pages; 'networkidle' for SPAs with dynamic content.
       await page.goto('/');
-      await page./* TODO 6.6: waitForLoadState('domcontentloaded') */;
+      await page./* TODO 6.6: waitForLoadState('domcontentloaded') */ waitForTimeout(0);
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
     });
 
@@ -364,7 +364,7 @@ test.describe('Part 6 — Navigation & Page State (formerly M05)', () => {
       // TODO 6.7: Create a promise that waits for a response whose URL contains '/api/'.
       // Use page.waitForResponse() with a URL pattern.
       // Trigger it by navigating to /login and submitting the form — which calls /api/auth.
-      const responsePromise = page./* TODO 6.7: waitForResponse(/\/api\//) */;
+      const responsePromise = page./* TODO 6.7: waitForResponse(/\/api\//) */ reload();
       await page.goto('/login');
 
       const response = await responsePromise;

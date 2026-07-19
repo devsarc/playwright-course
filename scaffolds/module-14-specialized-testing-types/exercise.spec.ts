@@ -502,7 +502,7 @@ test.describe('Part 5 — Chatbot & Rich UI Interaction (formerly M67)', () => {
     // TODO 5.5: Route '**/api/chat' to fulfill with:
     //   status 200, Content-Type: 'text/event-stream', body: MOCK_CHAT_SSE.
     // Why? Mocking the chat endpoint makes the response deterministic and instant.
-    await page.route(/* TODO 5.5: replace '**/PLACEHOLDER' with the chat API glob */ '**/PLACEHOLDER', route => {
+    await page.route(/* TODO 5.5 */ '**/PLACEHOLDER', route => {
       route.fulfill({
         status: 200,
         headers: { 'Content-Type': 'text/event-stream' },

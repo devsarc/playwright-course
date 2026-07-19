@@ -56,7 +56,8 @@ jobs:
         run: |
           BRANCH="${GITHUB_REF#refs/heads/}"
           # Extract 'module-NN-topic' from branch name (handles both
-          # 'module-05-navigation' and 'module-05-navigation-solution')
+          # 'module-05-visual-a11y-performance' and
+          # 'module-05-visual-a11y-performance-solution')
           MODULE=$(echo "$BRANCH" | grep -oP 'module-\d{2}-[a-z-]+' | head -1)
           echo "name=$MODULE" >> "$GITHUB_OUTPUT"
           echo "Detected module: $MODULE"

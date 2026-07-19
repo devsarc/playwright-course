@@ -18,7 +18,7 @@ test.describe('Part 1 — WebSocket Deep Dive (formerly M60)', () => {
     // TODO 1.1: Use page.routeWebSocket() to intercept '**/ws'.
     // In the handler, send { type: 'task.created', taskId: 'task-1' } to the page.
     // Why? routeWebSocket replaces the server — send deterministic frames for reliable assertions.
-    await page.routeWebSocket(/* TODO 1.1: replace '**/PLACEHOLDER' with your WebSocket URL glob */ '**/PLACEHOLDER', ws => {
+    await page.routeWebSocket(/* TODO 1.1 */ '**/PLACEHOLDER', ws => {
       ws.send(JSON.stringify({ type: 'task.created', taskId: 'task-1' }));
     });
 
@@ -117,7 +117,7 @@ test.describe('Part 1 — WebSocket Deep Dive (formerly M60)', () => {
     // TODO 1.9: Use page.routeWebSocket('**/ws', handler).
     // In the handler: increment connectionCount and call ws.close() immediately.
     // Why? Closing forces the app's reconnect logic — test it without touching the real server.
-    await page.routeWebSocket(/* TODO 1.9: '**/ws' */ '**/PLACEHOLDER', ws => {
+    await page.routeWebSocket(/* TODO 1.9 */ '**/PLACEHOLDER', ws => {
       connectionCount++;
       ws.close();
     });
@@ -144,7 +144,7 @@ test.describe('Part 2 — SSE & Streaming (formerly M61)', () => {
     // TODO 2.1: Use page.route() to intercept '**/api/activity-stream'.
     // Fulfill with: status 200, Content-Type 'text/event-stream', body SSE_BODY.
     // Why? Mocking SSE via page.route() gives full control over event sequence and timing.
-    await page.route(/* TODO 2.1: replace '**/PLACEHOLDER' with the SSE endpoint glob */ '**/PLACEHOLDER', route => {
+    await page.route(/* TODO 2.1 */ '**/PLACEHOLDER', route => {
       route.fulfill({
         status: 200,
         headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-cache' },

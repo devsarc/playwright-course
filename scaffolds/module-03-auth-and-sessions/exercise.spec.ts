@@ -103,7 +103,7 @@ test.describe('Part 2 — OAuth & SSO Flows (formerly M17)', () => {
     // Response: redirect to /dashboard (simulating a successful GitHub auth)
     await page.route('/api/auth/callback/github*', async (route) => {
       // TODO 2.5: Redirect to /dashboard to simulate successful OAuth
-      await route./* TODO 2.5: fulfill({ status: 302, headers: { Location: '/dashboard' } }) */;
+      await route./* TODO 2.5: fulfill({ status: 302, headers: { Location: '/dashboard' } }) */ continue();
     });
 
     await page.goto('/login');
@@ -144,7 +144,7 @@ test.describe('Part 3 — Cookie, Storage & Session Management (formerly M18)', 
     await page.goto('/');
 
     // TODO 3.5: Read the cookies from the context and assert 'test-session' exists.
-    const cookies = await context./* TODO 3.5: cookies() */;
+    const cookies = await context./* TODO 3.5: cookies() */ pages();
     const testCookie = cookies.find((c) => c.name === 'test-session');
     expect(testCookie?.value).toBe('abc123');
   });
@@ -154,7 +154,7 @@ test.describe('Part 3 — Cookie, Storage & Session Management (formerly M18)', 
 
     // TODO 3.6: Take a snapshot of the current storage state.
     // storageState() returns { cookies: [...], origins: [...] }
-    const snapshot = await context./* TODO 3.6: storageState() */;
+    const snapshot = await context./* TODO 3.6: storageState() */ pages();
 
     expect(snapshot).toHaveProperty('cookies');
     expect(snapshot).toHaveProperty('origins');
@@ -165,7 +165,7 @@ test.describe('Part 3 — Cookie, Storage & Session Management (formerly M18)', 
     await context.addCookies([{ name: 'some-cookie', value: 'val', domain: 'localhost', path: '/' }]);
 
     // TODO 3.7: Clear all cookies from the context.
-    await context./* TODO 3.7: clearCookies() */;
+    await context./* TODO 3.7: clearCookies() */ cookies();
 
     const cookies = await context.cookies();
     // TODO 3.8: Assert there are no cookies after clearing.

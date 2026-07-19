@@ -42,7 +42,7 @@ test.describe('Part 1 — Cross-Browser Testing Strategy (formerly M34)', () => 
     const pdfBuffer = await page.pdf();
 
     // TODO 1.4: Assert the PDF buffer is truthy (has content).
-    expect(pdfBuffer)./* TODO 1.4: toBeTruthy() */;
+    expect(pdfBuffer)./* TODO 1.4: toBeTruthy() */ toBeFalsy();
     expect(pdfBuffer.length).toBeGreaterThan(/* TODO 1.4: 0 */);
   });
 
@@ -60,7 +60,7 @@ test.describe('Part 1 — Cross-Browser Testing Strategy (formerly M34)', () => 
     // TODO 1.5: Fill the date input with '2025-06-15' using fill().
     // Why not type()? fill() sets the value atomically — for date inputs it
     // avoids partial-entry bugs where only part of the date is entered.
-    await dueDateInput./* TODO 1.5: fill('2025-06-15') */;
+    await dueDateInput./* TODO 1.5: fill('2025-06-15') */ clear();
 
     // TODO 1.6: Assert the input has the value '2025-06-15'.
     // Note: On WebKit, this may need to be verified differently — if this assertion
@@ -88,7 +88,7 @@ test.describe('Part 1 — Cross-Browser Testing Strategy (formerly M34)', () => 
     // TODO 1.8: Read the clipboard text and assert it contains 'lumio' or a task URL.
     // Use page.evaluate() to read navigator.clipboard.readText().
     const clipboardText = await page.evaluate(/* TODO 1.8: () => navigator.clipboard.readText() */);
-    expect(clipboardText)./* TODO 1.8: toContain('task') */;
+    expect(clipboardText)./* TODO 1.8: toContain('task') */ toBeNull();
   });
 
 });
@@ -267,7 +267,7 @@ test.describe('Part 3 — Geolocation, Permissions & Device APIs (formerly M36)'
     const takePhotoButton = page.getByRole('button', { name: /take photo/i });
 
     // TODO 3.9: Assert the "Take photo" button is visible when camera permission is granted.
-    await expect(takePhotoButton)./* TODO 3.9: toBeVisible() */;
+    await expect(takePhotoButton)./* TODO 3.9: toBeVisible() */ toBeHidden();
   });
 
 });

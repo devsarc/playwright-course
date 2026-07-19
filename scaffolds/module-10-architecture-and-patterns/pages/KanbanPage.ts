@@ -28,9 +28,9 @@ export class KanbanPage {
     // Locators must be created inside the constructor so they are bound to the
     // correct page instance — never pass strings around and call getByTestId later.
     this.todoColumn = page.getByTestId(/* TODO 3: 'kanban-column-todo' */);
-    this.inProgressColumn = /* TODO 3 */;
-    this.doneColumn = /* TODO 3 */;
-    this.addCardButton = /* TODO 3 */;
+    this.inProgressColumn = /* TODO 3 */ page.getByTestId('PLACEHOLDER');
+    this.doneColumn = /* TODO 3 */ page.getByTestId('PLACEHOLDER');
+    this.addCardButton = /* TODO 3 */ page.getByTestId('PLACEHOLDER');
   }
 
   // TODO 4: Implement goto() — navigate to the kanban board.

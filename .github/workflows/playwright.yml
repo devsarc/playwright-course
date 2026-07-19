@@ -1,6 +1,7 @@
 name: Playwright Tests
 
-# Triggers disabled — this file is a reference for M40 (CI/CD Pipeline Setup).
+# Triggers disabled — this file is a reference for Lesson 08 (Scale, Parallelism
+# & CI/CD, formerly M40's CI/CD Pipeline Setup).
 # The active learning CI is progress.yml. To run this pipeline manually,
 # use the "Run workflow" button in GitHub Actions.
 on:

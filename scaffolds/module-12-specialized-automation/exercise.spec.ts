@@ -568,7 +568,7 @@ test.describe('Part 5 — Screenshot & Demo Generation (formerly M59)', () => {
     await page.goto('/dashboard');
 
     // TODO 5.7: Assert that page.waitForLoadState is a function.
-    expect(typeof /* TODO 5.7: page.waitForLoadState */).toBe('function');
+    expect(typeof /* TODO 5.7: page.waitForLoadState */ 0).toBe('function');
   });
 
 });

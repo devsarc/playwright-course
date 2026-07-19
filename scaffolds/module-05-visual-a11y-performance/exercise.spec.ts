@@ -399,7 +399,7 @@ test.describe('Part 5 — Performance Testing & Measurement (formerly M29)', () 
       await page.getByTestId('new-card-input').fill('Perf test card');
       await page.getByTestId('new-card-input').press('Enter');
       await page.getByTestId('kanban-card').filter({ hasText: 'Perf test card' }).waitFor();
-      const duration = Date.now() - /* TODO 5.6: start */;
+      const duration = Date.now() - /* TODO 5.6: start */ 0;
 
       expect(duration).toBeLessThan(/* TODO 5.6: 1000 */);
     });

@@ -242,11 +242,11 @@ test.describe('Part 3 — Data-Driven Testing (formerly M49)', () => {
         if (errorExpected) {
           // Invalid input: dialog should stay open (form rejected the submission).
           // TODO 3.3: Assert that the dialog is still visible.
-          await expect(page.getByRole('dialog'))./* TODO 3.3: toBeVisible() */;
+          await expect(page.getByRole('dialog'))./* TODO 3.3: toBeVisible() */ toBeHidden();
         } else {
           // Valid input: dialog should close.
           // TODO 3.4: Assert that the dialog is not visible.
-          await expect(page.getByRole('dialog'))./* TODO 3.4: not.toBeVisible() */;
+          await expect(page.getByRole('dialog'))./* TODO 3.4: not.toBeVisible() */ toBeVisible();
         }
       });
     }
@@ -261,7 +261,7 @@ test.describe('Part 3 — Data-Driven Testing (formerly M49)', () => {
     // Why? The title and priority together identify which combination failed —
     // "creates task: Fix login bug (high priority)" is far more useful than "creates task 3".
     for (const { title, priority } of taskDataPath /* TODO 3.5: */) {
-      test(`creates task: "${/* TODO 3.5: title */}" (${/* TODO 3.5: priority */} priority)`, async ({ page }) => {
+      test(`creates task: "${/* TODO 3.5: title */'PLACEHOLDER'}" (${/* TODO 3.5: priority */'PLACEHOLDER'} priority)`, async ({ page }) => {
         await page.goto('/dashboard');
 
         // Open the task creation dialog.
@@ -279,7 +279,7 @@ test.describe('Part 3 — Data-Driven Testing (formerly M49)', () => {
         // Verify the task card appeared on the board.
         // TODO 3.7: Assert that the task card with the loop's title text is visible.
         await expect(
-          page.getByTestId('task-card').filter({ hasText: /* TODO 3.7: title */ })
+          page.getByTestId('task-card').filter({ hasText: /* TODO 3.7: title */ 'PLACEHOLDER' })
         ).toBeVisible();
       });
     }

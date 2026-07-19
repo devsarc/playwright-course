@@ -64,7 +64,7 @@ test.describe('Part 1 — Network Interception & Mocking (formerly M12)', () => 
     // TODO 1.4: Intercept all fetch requests to /api/* and abort them.
     // route.abort() simulates a network error (connection refused, DNS failure).
     await page.route('/api/*', async (route) => {
-      await route./* TODO 1.4: abort() */;
+      await route./* TODO 1.4: abort() */ continue();
     });
 
     await page.goto('/');

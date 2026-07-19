@@ -9,7 +9,7 @@
 // 2.N here, matching Part 2's prefix).
 
 import { test, expect, devices } from '../fixtures/fixtures';
-import { KanbanPage } from '../module-47-page-object-model/pages/KanbanPage';
+import { KanbanPage } from '../module-10-architecture-and-patterns/pages/KanbanPage';
 import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Part 1 — Smoke Suite for Lumio (formerly M89)', () => {
