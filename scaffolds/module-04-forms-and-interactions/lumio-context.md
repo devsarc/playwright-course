@@ -37,7 +37,7 @@ The Radix Select plan picker is a custom component — not a native `<select>` �
 
 ### What's in Lumio at this point
 
-By module 21 the user has created a workspace (in Part 1 of this lesson (formerly M20)) and can now access the workspace settings page. The settings page at `/settings/workspace` serves two purposes relevant to this module:
+By module 21 the user has created a workspace (in M20) and can now access the workspace settings page. The settings page at `/settings/workspace` serves two purposes relevant to this module:
 
 1. **Delete workspace** — A "Delete workspace" button at the bottom of the page calls `window.confirm()` with a message asking the user to confirm the destructive action. On confirmation the workspace is deleted and the user is redirected to `/dashboard`. On dismissal the page stays unchanged.
 

@@ -1,7 +1,7 @@
 /**
  * Branch Generation Script
  *
- * Builds all 93 module branches sequentially. Each branch:
+ * Builds all 20 lesson branches sequentially. Each branch:
  * 1. Starts from the correct Lumio snapshot (tagged commit on main)
  * 2. Has tests/solved/ pre-populated with solutions from all previous modules
  * 3. Has tests/module-NN-topic/ with the exercise scaffold for this module

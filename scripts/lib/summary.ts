@@ -35,7 +35,7 @@ export function writeSummary(
       : '';
     append(`\n✅ **All tests passed!** Unlocked: **${next}**${auto}\n`);
   } else if (decision.type === 'complete') {
-    append('\n🎉 **All 93 modules complete! Congratulations!**\n');
+    append('\n🎉 **All 20 lessons complete! Congratulations!**\n');
   } else if (decision.type === 'fail') {
     append(`\n❌ **FAIL** — ${decision.failedModules.join(', ')} failed. Fix and push again.\n`);
   } else if (decision.type === 'regression') {

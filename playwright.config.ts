@@ -12,10 +12,7 @@ export default defineConfig({
   // CT modules require their own config (playwright-ct.config.ts / playwright-ct-vue.config.ts).
   // Exclude them here so the regular runner doesn't try to load their CT-specific imports.
   testIgnore: [
-    '**/module-51-*/**',
-    '**/module-52-*/**',
-    '**/module-53-*/**',
-    '**/module-54-*/**',
+    '**/module-11-*/**',
   ],
 
   ...(pwTestMatch && pwTestMatch.length > 0
@@ -54,7 +51,9 @@ export default defineConfig({
   },
 
   projects: [
-    // Default: Chromium only. M07 expands this to Firefox + WebKit.
+    // Default: Chromium only. Lesson 01 (test-runner-organization, which
+    // includes the former M07 multi-project config exercise) and Lesson 07
+    // (cross-browser-and-mobile) expand this to Firefox + WebKit.
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
@@ -63,7 +62,8 @@ export default defineConfig({
 
   webServer: {
     // Starts Lumio's Next.js dev server before tests run.
-    // M41 teaches all the options available here.
+    // Lesson 08 (scale-and-cicd, Part 4, formerly M41) teaches all the
+    // options available here.
     command: 'npm run dev --prefix lumio',
     url: 'http://localhost:3000',
     // Reuse an already-running server locally; always start fresh in CI

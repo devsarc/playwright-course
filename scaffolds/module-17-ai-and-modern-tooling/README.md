@@ -193,7 +193,7 @@ When a test fails, the healer:
 **Run → Inspect → Fix cycle.**
 
 ```
-playwright-test-healer --test tests/module-79-ai-test-healing/exercise.spec.ts
+playwright-test-healer --test tests/module-17-ai-and-modern-tooling/exercise.spec.ts
 ```
 
 Output:

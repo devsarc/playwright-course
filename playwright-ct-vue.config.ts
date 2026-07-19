@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
   testDir: './tests',
-  testMatch: '**/module-53-*/**/*.spec.tsx',
+  testMatch: '**/module-11-*/exercise.vue.spec.tsx',
   use: {
     ctPort: 3101,
     ctViteConfig: {

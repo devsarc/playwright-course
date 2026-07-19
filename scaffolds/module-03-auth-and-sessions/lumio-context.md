@@ -50,10 +50,10 @@ depends on setup — it runs after and reuses the saved state.
 
 ### The admin auth state
 
-Part 4 of this lesson (formerly M19) references `.auth-state-admin.json`. This
+M19 references `.auth-state-admin.json`. This
 file would be created by an additional setup step that logs in as an admin
 user. The admin setup is not implemented in M16 (which focuses on the member
-flow) — it's referenced in Part 4 of this lesson (formerly M19) to show the
+flow) — it's referenced in M19 to show the
 access control pattern.
 
 ## Part 2 — OAuth & SSO Flows (formerly M17)

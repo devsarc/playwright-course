@@ -3,6 +3,11 @@
 **Date:** 2026-05-08
 **Status:** Approved
 
+> **Note (2026-07-18):** The module *count* described below (93 modules) was
+> later merged into 20 lessons — see `2026-07-18-lesson-aggregation-93-to-20.md`.
+> The architecture, Lumio app design, and per-topic content described here are
+> still accurate; only the number of top-level lesson directories changed.
+
 ---
 
 ## Overview

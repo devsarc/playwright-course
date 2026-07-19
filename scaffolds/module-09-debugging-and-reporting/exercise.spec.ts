@@ -267,7 +267,7 @@ test.describe('Part 3 — Reporters Deep Dive (formerly M44)', () => {
   // Test 6: Live test — run with HTML reporter and verify output
   test('html reporter output folder exists after a run', async ({ page }) => {
     // The html reporter writes to playwright-report/ by default.
-    // Run: npx playwright test tests/module-44-reporters-deep-dive --reporter=html
+    // Run: npx playwright test tests/module-09-debugging-and-reporting --reporter=html
     // Then open: npx playwright show-report
     await page.goto('/dashboard');
 
@@ -285,7 +285,7 @@ test.describe('Part 4 — Debugging Strategies (formerly M45)', () => {
   // Trace Viewer (post-mortem), page.on('console') (runtime), locator.highlight() (visual).
   //
   // Run with --headed to see highlight() in action:
-  //   npx playwright test tests/module-45-debugging-strategies --headed
+  //   npx playwright test tests/module-09-debugging-and-reporting --headed
 
   // Test 1: Capture browser console messages with page.on('console')
   // Console messages from the app's JavaScript runtime are invisible by default.
@@ -427,7 +427,7 @@ test.describe('Part 5 — test.step() & Runtime Attachments (formerly M46)', () 
   // M46: test.step() & Runtime Attachments
   //
   // Run with html reporter to see steps and attachments in the report:
-  //   npx playwright test tests/module-46-test-step-attachments --reporter=html
+  //   npx playwright test tests/module-09-debugging-and-reporting --reporter=html
   //   npx playwright show-report
 
   // Test 1: Use test.step() to group a navigation phase

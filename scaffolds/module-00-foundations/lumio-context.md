@@ -44,13 +44,13 @@ Playwright's `toHaveTitle()` reads the `<title>` tag the browser renders.
 There is no Lumio interaction in M01. This module builds mental models before you
 start writing tests.
 
-When you do begin testing Lumio (from Part 3 of this lesson (formerly M02) onward), the Browser/Context/Page model
+When you do begin testing Lumio (from M02 onward), the Browser/Context/Page model
 will be visible in how your tests are structured:
 
 - Playwright's test runner creates a `BrowserContext` for each test — that's why
   logging in as one user in Test A doesn't affect Test B.
 - The `page` fixture your tests receive is a `Page` object inside that context.
-- When you add a `loggedInPage` fixture in Lesson 01 (formerly M08), you're configuring the BrowserContext
+- When you add a `loggedInPage` fixture in M08, you're configuring the BrowserContext
   to pre-load saved auth state — which is fast precisely because contexts are cheap to create.
 
 ## Part 3 — Locators — Finding Elements (formerly M02)
@@ -116,7 +116,7 @@ await page.getByRole('combobox', { name: 'Priority' }).click();
 await page.getByRole('option', { name: 'High' }).click();
 ```
 
-Lesson 04 (formerly M20) introduces Lumio's task creation form with a Radix Select — that's where this
+M20 introduces Lumio's task creation form with a Radix Select — that's where this
 pattern is properly exercised.
 
 ## Part 5 — Assertions — Verifying State (formerly M04)

@@ -3,6 +3,11 @@
 **Date:** 2026-05-09
 **Status:** Approved
 
+> **Note (2026-07-18):** References to "93 modules" below predate the
+> 20-lesson merge — see `2026-07-18-lesson-aggregation-93-to-20.md`. The
+> progressive-unlock mechanism described here is unchanged; only the total
+> module count and specific IDs (e.g. "M92" is now "M19") are stale.
+
 ## Overview
 
 A single-branch (`main`) CI system for the Playwright learning platform that:

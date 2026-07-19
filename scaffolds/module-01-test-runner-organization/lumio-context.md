@@ -69,7 +69,7 @@ navigate to `/`, log in, navigate to a workspace. Repeating this in every test
 is noisy and slow. Fixtures let you extract that setup once and inject it.
 
 The `loggedInPage` fixture (TODO 3.5) is the foundation for all authenticated tests
-in Part 4 of this lesson (formerly M09) onward. Instead of writing a login sequence
+in M09 onward. Instead of writing a login sequence
 in every test, you declare `{ loggedInPage }` in the test signature and get a page
 that's already logged in.
 
@@ -121,8 +121,8 @@ file, so you must run M09 with its own config to see the setup behavior.
 
 The test in `exercise.spec.ts` calls `/api/projects?workspaceId=...` without
 authentication. The API correctly returns 401. This is intentional — M09 is
-about global setup, not authenticated API testing. Lesson 02 (formerly M14) and
-Lesson 03 (formerly M16) cover auth.
+about global setup, not authenticated API testing. M14 and
+M16 cover auth.
 
 ## Part 5 — Watch Mode & Developer Workflow (formerly M10)
 

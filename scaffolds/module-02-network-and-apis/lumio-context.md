@@ -92,9 +92,9 @@ await request.post('/api/auth/callback/credentials', {
 });
 ```
 
-This is a lower-level approach than Lesson 03 (formerly M16)'s `storageState` pattern. It works but
+This is a lower-level approach than M16's `storageState` pattern. It works but
 requires extracting the session cookie from the `set-cookie` header manually.
-Lesson 03 (formerly M16) replaces this with `page.context().storageState()` — much simpler.
+M16 replaces this with `page.context().storageState()` — much simpler.
 
 ### Seed data dependency
 
