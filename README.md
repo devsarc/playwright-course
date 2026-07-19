@@ -9,7 +9,7 @@ realistic context — not toy examples.
 Lumio is a Kanban-style project management app built with Next.js 14, Prisma, and PostgreSQL.
 It includes authentication, a drag-and-drop board, a rich-text editor, file uploads, WebSocket
 presence, a REST API, and a PWA service worker — enough surface area to cover every major
-Playwright topic across 93 modules.
+Playwright topic across 20 lessons (a curated merge of the original 93-module curriculum).
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ npm run db:push --prefix lumio
 npm run db:seed --prefix lumio
 
 # 6. Verify everything works — run the M00 smoke test
-npx playwright test tests/module-00-setup --headed
+npx playwright test tests/module-00-foundations --headed
 ```
 
 > The Lumio dev server starts automatically before tests run (configured in `playwright.config.ts`).
@@ -48,7 +48,7 @@ npx playwright test tests/module-00-setup --headed
 
 ## Course Structure
 
-All 93 modules live under `tests/`. See **[tests/README.md](tests/README.md)** for the full module
+All 20 lessons live under `tests/`. See **[tests/README.md](tests/README.md)** for the full module
 index with topics, learning objectives, and file lists.
 
 Each module folder contains:
@@ -89,12 +89,12 @@ playwright-course/
 │   └── server.ts           # Custom HTTP + WebSocket server
 ├── tests/
 │   ├── fixtures/           # Shared Playwright fixtures
-│   ├── module-00-setup/
+│   ├── module-00-foundations/
 │   ├── module-01-*/
-│   └── …                   # M00 – M92
+│   └── …                   # M00 – M19
 ├── playwright.config.ts
-├── playwright-ct.config.ts     # React component-testing config (M51–M52, M54)
-├── playwright-ct-vue.config.ts # Vue component-testing config (M53)
+├── playwright-ct.config.ts     # React component-testing config (Lesson 11, Parts 1/2/4)
+├── playwright-ct-vue.config.ts # Vue component-testing config (Lesson 11, Part 3)
 └── tsconfig.json
 ```
 
