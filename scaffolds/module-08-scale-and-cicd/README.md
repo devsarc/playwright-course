@@ -95,7 +95,7 @@ Running Playwright locally is fast and immediate. Running it in CI requires thin
 
 ### Part 4 — WebServer Config & Test Environment (formerly M41)
 
-`webServer` is Playwright's way of owning the full lifecycle of your application during tests — start the server before tests run, tear it down after. Lesson 00 (formerly M00) introduced the basic configuration. Part 4 of this lesson (formerly M41) goes deep on every option, the edge cases, and the patterns for more complex architectures.
+`webServer` is Playwright's way of owning the full lifecycle of your application during tests — start the server before tests run, tear it down after. Lesson 00 (formerly M00) introduced the basic configuration. M41 goes deep on every option, the edge cases, and the patterns for more complex architectures.
 
 **`command` and `url`.** The `command` is a shell command Playwright spawns as a child process. The `url` is the address Playwright polls with HTTP GET requests every 1 second. When the URL returns any 2xx response, Playwright considers the server ready and starts running tests. This polling is why you need a `/` route or a `/health` endpoint — Playwright needs something to hit. If the URL never responds within `timeout`, the entire run fails before any test executes.
 
