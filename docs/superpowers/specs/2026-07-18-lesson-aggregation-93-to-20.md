@@ -80,7 +80,7 @@ Phases 10–21.
   section does (e.g. "Lesson 01 (formerly M08)"), while Lessons 05–19 left
   them bare (e.g. "M08"). Both readings were individually defensible against
   the merge brief's text, but the split was inconsistent across the plan's
-  execution. Reconciled during this task by reverting Lessons 00–04's 10
+  execution. Reconciled during this task by reverting Lessons 00–04's 11
   inline cross-references to the bare form, matching the majority
   convention already used by Lessons 05–19. The `## Part N — Title (formerly
   M{old})` section headers themselves are unaffected — that format is
