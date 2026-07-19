@@ -44,8 +44,10 @@ jobs:
         # Skip install if cache hit — saves ~2 min per run
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: |
-          # Most modules need Chromium only.
-          # M07 and M34 (cross-browser) install all three via their own
+          # Most lessons need Chromium only.
+          # Lesson 01 (test-runner-organization, which includes the former
+          # M07 multi-project config exercise) and Lesson 07
+          # (cross-browser-and-mobile) install all three via their own
           # overridden workflow step in their branch's module-check.yml.
           npx playwright install --with-deps chromium
 
