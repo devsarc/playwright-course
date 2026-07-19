@@ -1,4 +1,4 @@
-// Lesson 10: Architecture & Test Design Patterns
+// Lesson 10: Test Architecture & Design Patterns
 // Combines former modules: M47 (Page Object Model), M48 (Advanced Fixture
 // Patterns), M49 (Data-Driven Testing), M50 (Test Organization & Suite
 // Architecture).

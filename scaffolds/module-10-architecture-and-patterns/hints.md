@@ -52,6 +52,11 @@ async cardCount(column: Locator): Promise<number> {
 }
 ```
 
+(TODOs 1.1–1.6 above are in `pages/KanbanPage.ts`, not `exercise.spec.ts` — that file
+is copied over from the original module unchanged, so its TODOs keep their original
+bare numbers `TODO 1`–`TODO 6`, per the same precedent used for other extra files
+copied unchanged in this lesson series.)
+
 ### TODO 1.7 — beforeEach
 
 ```typescript
